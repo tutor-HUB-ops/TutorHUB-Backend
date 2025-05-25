@@ -14,6 +14,7 @@ This documentation provides detailed information about the TutorHUB backend serv
 
 ## Documentation Files
 
+- [Architecture Overview](./architecture.md) - How components work together
 - [Controllers Documentation](./controllers.md)
 - [Models Documentation](./models.md)
 - [Routes Documentation](./routes.md)
@@ -23,4 +24,6 @@ This documentation provides detailed information about the TutorHUB backend serv
 
 ## Getting Started
 
-To use this documentation, navigate to the specific component you're interested in using the links above. Each component's documentation provides detailed information about its functions, parameters, and usage. 
+To use this documentation, navigate to the specific component you're interested in using the links above. Each component's documentation provides detailed information about its functions, parameters, and usage.
+
+For a better understanding of how all components work together, start with the [Architecture Overview](./architecture.md) document.
