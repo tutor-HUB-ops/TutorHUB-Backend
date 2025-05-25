@@ -46,6 +46,9 @@ async function createGoogleMeet({ summary, description, startTime, endTime, atte
           conferenceSolutionKey: { type: "hangoutsMeet" },
         },
       },
+      guestsCanModify: true,
+      guestsCanSeeOtherGuests: true,
+      guestsCanInviteOthers: false
     };
 
     console.log("Attempting to create calendar event...");
