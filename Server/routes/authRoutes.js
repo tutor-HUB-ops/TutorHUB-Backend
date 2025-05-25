@@ -20,7 +20,7 @@ AuthRouter.post("/register/:role", registerUser);
 
 // Two-step registration for teachers
 AuthRouter.post("/register/teacher/data", registerUser); // First step: Send teacher data
-AuthRouter.post("/register/teacher/files", handleFileUpload, registerUser); // Second step: Upload files
+
 
 AuthRouter.post("/login", checkBanStatus, loginUser);
 AuthRouter.post("/logout", auth, logoutUser);
