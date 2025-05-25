@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     
     "server": "node index.js",
+=======
+>>>>>>> 4300e24e1142603e701185bf9c075b1b28c9111d
     "start": "node index.js",
     "dev": "node index.js"
   },
