@@ -657,17 +657,17 @@ const cancelBooking = async (req, res) => {
       });
     }
 
+    // Delete Google Meet if it exists
     if (booking.eventId) {
       try {
         await deleteGoogleMeetEvent(booking.eventId);
       } catch (error) {
         console.error("Error deleting meeting:", error);
-        throw error;  
+        // Continue with cancellation even if meeting deletion fails
       }
     }
 
-
-      const cancelledBooking = await BookingModel.findByIdAndUpdate(
+    const cancelledBooking = await BookingModel.findByIdAndUpdate(
       bookingId,
       { 
         status: "cancelled",
@@ -681,15 +681,15 @@ const cancelBooking = async (req, res) => {
       // Send email to student
       await sendEmail({
         to: booking.student.email,
-        subject: 'Booking Cancelled',
+        subject: 'Booking Cancelled by Teacher',
         html: `
-          <h2>Booking Cancelled</h2>
-          <p>Your booking for <strong>${booking.subject}</strong> has been cancelled by the teacher.</p>
+          <h2>Booking Cancelled by Teacher</h2>
+          <p>Your confirmed booking for <strong>${booking.subject}</strong> has been cancelled by the teacher.</p>
           <p>Date: ${new Date(booking.date).toLocaleDateString()}</p>
           <p>Time: ${booking.timeSlot.start} - ${booking.timeSlot.end}</p>
           <p>Teacher: ${booking.teacher.name}</p>
           <p>If you have any questions, please contact your teacher.</p>
-          <p>Thank you for using TutorConnect!</p>
+          <p>Thank you for using Tutor HUB!</p>
         `
       });
 
@@ -699,19 +699,17 @@ const cancelBooking = async (req, res) => {
         subject: 'Booking Cancelled',
         html: `
           <h2>Booking Cancelled</h2>
-          <p>You have cancelled the booking for <strong>${booking.subject}</strong>.</p>
+          <p>You have cancelled the confirmed booking for <strong>${booking.subject}</strong>.</p>
           <p>Date: ${new Date(booking.date).toLocaleDateString()}</p>
           <p>Time: ${booking.timeSlot.start} - ${booking.timeSlot.end}</p>
           <p>Student: ${booking.student.name}</p>
-          <p>Thank you for using TutorConnect!</p>
+          <p>Thank you for using Tutor HUB!</p>
         `
       });
     } catch (emailError) {
       console.error('Error sending cancellation emails:', emailError);
       // Continue even if email sending fails
     }
-
-    
 
     res.status(200).send({ 
       msg: "Booking cancelled",
@@ -726,6 +724,7 @@ const cancelBooking = async (req, res) => {
       }
     });
   } catch (error) {
+    console.error("Error in cancelBooking:", error);
     res.status(500).send({ msg: error.message });
   }
 };

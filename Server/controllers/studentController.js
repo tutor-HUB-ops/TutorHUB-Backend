@@ -202,7 +202,7 @@ const cancelBooking = async (req, res) => {
         await deleteGoogleMeetEvent(booking.eventId);
       } catch (error) {
         console.error("Error deleting meeting:", error);
-        throw error;
+        // Continue with cancellation even if meeting deletion fails
       }
     }
 
@@ -216,40 +216,37 @@ const cancelBooking = async (req, res) => {
       { new: true }
     ).populate("teacher", "name email").populate("student", "name email");
 
-    // Only send emails for pending bookings
-    if (booking.status === "confirmed") {
-      try {
-        // Send email to student
-        await sendEmail({
-          to: booking.student.email,
-          subject: 'Booking Cancelled',
-          html: `
-            <h2>Booking Cancelled</h2>
-            <p>You have cancelled your pending booking for <strong>${booking.subject}</strong>.</p>
-            <p>Date: ${new Date(booking.date).toLocaleDateString()}</p>
-            <p>Time: ${booking.timeSlot.start} - ${booking.timeSlot.end}</p>
-            <p>Teacher: ${booking.teacher.name}</p>
-            <p>Thank you for using TutorConnect!</p>
-          `
-        });
+    try {
+      // Send email to student
+      await sendEmail({
+        to: booking.student.email,
+        subject: 'Booking Cancelled',
+        html: `
+          <h2>Booking Cancelled</h2>
+          <p>You have cancelled your ${booking.status} booking for <strong>${booking.subject}</strong>.</p>
+          <p>Date: ${new Date(booking.date).toLocaleDateString()}</p>
+          <p>Time: ${booking.timeSlot.start} - ${booking.timeSlot.end}</p>
+          <p>Teacher: ${booking.teacher.name}</p>
+          <p>Thank you for using Tutor HUB!</p>
+        `
+      });
 
-        // Send email to teacher
-        await sendEmail({
-          to: booking.teacher.email,
-          subject: 'Booking Cancelled',
-          html: `
-            <h2>Booking Cancelled</h2>
-            <p>A student has cancelled their pending booking for <strong>${booking.subject}</strong>.</p>
-            <p>Date: ${new Date(booking.date).toLocaleDateString()}</p>
-            <p>Time: ${booking.timeSlot.start} - ${booking.timeSlot.end}</p>
-            <p>Student: ${booking.student.name}</p>
-            <p>Thank you for using TutorConnect!</p>
-          `
-        });
-      } catch (emailError) {
-        console.error('Error sending cancellation emails:', emailError);
-        // Continue even if email sending fails
-      }
+      // Send email to teacher
+      await sendEmail({
+        to: booking.teacher.email,
+        subject: 'Booking Cancelled',
+        html: `
+          <h2>Booking Cancelled</h2>
+          <p>A student has cancelled their ${booking.status} booking for <strong>${booking.subject}</strong>.</p>
+          <p>Date: ${new Date(booking.date).toLocaleDateString()}</p>
+          <p>Time: ${booking.timeSlot.start} - ${booking.timeSlot.end}</p>
+          <p>Student: ${booking.student.name}</p>
+          <p>Thank you for using Tutor HUB!</p>
+        `
+      });
+    } catch (emailError) {
+      console.error('Error sending cancellation emails:', emailError);
+      // Continue even if email sending fails
     }
 
     res.status(200).send({ 
