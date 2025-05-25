@@ -1,0 +1,222 @@
+{
+    "msg": "Admin registered successfully",
+    "admin": {
+        "name": "admin add",
+        "email": "asdf@gmail.com",
+        "password": "$2b$10$lC6S/M64MxI7hctj/cOA7eXg2.HhfyPodhNa1uccBmo5PkngKCuVK",
+        "role": "admin",
+        "_id": "682e23dd8b382b573e098496",
+        "__v": 0
+    }
+"email": "asdf@gmail.com",
+"password": "1234567"
+}
+
+
+{
+    "msg": "Student registration successful",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJlMmI3NTQxYzNhY2E0ZmE3YzVlODAiLCJyb2xlIjoic3R1ZGVudCIsImVtYWlsIjoic3R1ZGVudEBnbWFpbC5jb20iLCJpYXQiOjE3NDc4NTYyNDUsImV4cCI6MTc0Nzk0MjY0NX0.nMgkCux5SX9QMThn3neuPPX6AjUPk3pAsye3Tg9WQf8",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJlMmI3NTQxYzNhY2E0ZmE3YzVlODAiLCJyb2xlIjoic3R1ZGVudCIsImVtYWlsIjoic3R1ZGVudEBnbWFpbC5jb20iLCJpYXQiOjE3NDc4NTYyNDUsImV4cCI6MTc0ODIwMTg0NX0.o3W8AXSy8rIUlJwi7RYF6cSG926HOuXfBF0xw9W2k_o",
+    "user": {
+        "name": "student add",
+        "email": "student@gmail.com",
+        "password": "$2b$10$xGioXdSB09IVJQ6p6F.bpOl/E8V3yaKeGjO49Jrpu6Sv9oN7SowF2",
+        "banned": false,
+        "role": "student",
+        "_id": "682e2b7541c3aca4fa7c5e80",
+        "createdAt": "2025-05-21T19:37:25.156Z",
+        "updatedAt": "2025-05-21T19:37:25.156Z",
+        "__v": 0
+    }
+}
+
+
+{
+    "msg": "Teacher registration successful",
+    "user": {
+        "name": "Alice Doe",
+        "email": "alice@example.com",
+        "verified": false,
+        "password": "$2b$10$hQLac0C7/Vpix7aruux/a.iZQt3js60dsWwHQG0rMwqyuy4huzGfu",
+        "attachments": [
+            "cv.pdf"
+        ],
+        "subjects": [
+            "Math",
+            "Physics"
+        ],
+        "qualification": "MSc Mathematics",
+        "availability": [],
+        "banned": false,
+        "hourlyRate": 25,
+        "_id": "682e2debe0b57f6298683603",
+        "__v": 0
+    }
+}
+
+
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+{
+    "msg": "Login successful",
+    "user": {
+        "_id": "682e2debe0b57f6298683603",
+        "name": "Alice Doe",
+        "email": "alice@example.com",
+        "verified": false,
+        "attachments": [
+            "cv.pdf"
+        ],
+        "subjects": [
+            "Math",
+            "Physics"
+        ],
+        "qualification": "MSc Mathematics",
+        "availability": [],
+        "banned": false,
+        "hourlyRate": 25,
+        "__v": 0
+    }
+}
+
+
+
+
+{
+    "msg": "Login successful",
+    "user": {
+        "_id": "682e2b7541c3aca4fa7c5e80",
+        "name": "student add",
+        "email": "student@gmail.com",
+        "banned": false,
+        "role": "student",
+        "createdAt": "2025-05-21T19:37:25.156Z",
+        "updatedAt": "2025-05-21T19:37:25.156Z",
+        "__v": 0
+    }
+}
+
+
+
+
+{
+    "students": [
+        {
+            "_id": "682e2b7541c3aca4fa7c5e80",
+            "name": "amare",
+            "email": "amare@gmail.com",
+            "banned": false,
+            "role": "student",
+            "createdAt": "2025-05-21T19:37:25.156Z",
+            "updatedAt": "2025-05-21T23:11:46.162Z"
+        }
+    ]
+}
+
+
+{
+    "teachers": [
+        {
+            "_id": "682e2debe0b57f6298683603",
+            "name": "allen title2",
+            "email": "allen@gmail.com",
+            "verified": true,
+            "password": "$2b$10$hQLac0C7/Vpix7aruux/a.iZQt3js60dsWwHQG0rMwqyuy4huzGfu",
+            "attachments": [
+                "cv.pdf"
+            ],
+            "subjects": [
+                "Math",
+                "Physics",
+                "English"
+            ],
+            "qualification": "MSc Mathematics",
+            "availability": [
+                {
+                    "day": "Thursday",
+                    "startTime": "14:00",
+                    "endTime": "15:30",
+                    "_id": "682e5021644aa9b14a084fb3"
+                },
+                {
+                    "day": "Sunday",
+                    "startTime": "14:00",
+                    "endTime": "15:30",
+                    "_id": "682e502a644aa9b14a084fba"
+                },
+                {
+                    "day": "Tuesday",
+                    "startTime": "14:00",
+                    "endTime": "15:30",
+                    "_id": "682e508cd524cbda72b71673"
+                }
+            ],
+            "banned": false,
+            "hourlyRate": 25,
+            "role": "teacher"
+        }
+    ]
+}
+
+
+{
+    "bookings": [
+        {
+            "timeSlot": {
+                "start": "14:00",
+                "end": "15:30"
+            },
+            "_id": "682e6051cc1dc816fa6abe32",
+            "student": "682e2b7541c3aca4fa7c5e80",
+            "teacher": "682e2debe0b57f6298683603",
+            "subject": "English",
+            "date": "2025-05-23T00:00:00.000Z",
+            "day": "Friday",
+            "status": "pending",
+            "createdAt": "2025-05-21T23:22:57.094Z",
+            "updatedAt": "2025-05-21T23:22:57.094Z"
+        }
+    ]
+}
+
+
+
+Physics
+
+
+
+{
+    "msg": "Teacher booked successfully",
+    "booking": {
+        "id": "682ec3ed338d8d8d591953ae",
+        "subject": "Physics",
+        "date": "2025-05-23T00:00:00.000Z",
+        "timeSlot": {
+            "start": "14:00",
+            "end": "15:30"
+        },
+        "status": "pending",
+        "teacherName": "Alice Doe",
+        "teacherEmail": "alice@example.com"
+    }
+}
+
+
+{
+    "msg": "Teacher booked successfully",
+    "booking": {
+        "id": "682ec40f338d8d8d591953be",
+        "subject": "Math",
+        "date": "2025-06-23T00:00:00.000Z",
+        "timeSlot": {
+            "start": "14:00",
+            "end": "15:30"
+        },
+        "status": "pending",
+        "teacherName": "Alice Doe",
+        "teacherEmail": "alice@example.com"
+    }
+}
